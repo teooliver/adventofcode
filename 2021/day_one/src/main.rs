@@ -1,3 +1,6 @@
+// Instructions:
+// https://adventofcode.com/2021/day/1
+
 fn main() {
     let report: Vec<u32> = vec![199, 200, 208, 210, 200, 207, 240, 269, 260, 263];
 
