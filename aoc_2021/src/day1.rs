@@ -27,12 +27,10 @@ pub fn part_b(input: &str) -> i64 {
         .collect();
 
     let mut depth_increments = 0;
-    let mut previous_window = 0;
-    let mut current_window = 0;
 
     for i in 3..report.len() {
-        current_window = report[i] + report[i - 1] + report[i - 2];
-        previous_window = report[i - 1] + report[i - 2] + report[i - 3];
+        let current_window = report[i] + report[i - 1] + report[i - 2];
+        let previous_window = report[i - 1] + report[i - 2] + report[i - 3];
 
         if current_window > previous_window {
             depth_increments += 1;
