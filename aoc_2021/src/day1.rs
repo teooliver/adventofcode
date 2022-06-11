@@ -37,7 +37,6 @@ pub fn part_b(input: &str) -> i64 {
         if current_window > previous_window {
             depth_increments += 1;
         }
-        previous_window = current_window;
     }
 
     depth_increments
@@ -48,7 +47,7 @@ mod day_one_tests {
     use super::{part_a, part_b};
     #[test]
     fn test_day_one() {
-        assert_eq!(part_a(include_str!("input.txt")), 1226);
-        assert_eq!(part_b(include_str!("input.txt")), 1252);
+        assert_eq!(part_a(include_str!("day1_input.txt")), 1226);
+        assert_eq!(part_b(include_str!("day1_input.txt")), 1252);
     }
 }
