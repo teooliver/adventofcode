@@ -60,10 +60,10 @@ pub fn part_b(input: &str) -> i64 {
 }
 
 #[cfg(test)]
-mod day_two_tests {
+mod tests {
     use super::{part_a, part_b};
     #[test]
-    fn test_day_one() {
+    fn test_day_2() {
         assert_eq!(part_a(include_str!("day2_input.txt")), 1670340);
         assert_eq!(part_b(include_str!("day2_input.txt")), 1954293920);
     }
