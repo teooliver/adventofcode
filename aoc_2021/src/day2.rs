@@ -1,21 +1,6 @@
-#[derive(Debug, PartialEq)]
 pub struct EndPosition {
     x: i64,
     y: i64,
-}
-
-fn map_direction_to_struct(direction: Vec<&str>, mut end_position: EndPosition) {
-    if direction[0] == "forward" {
-        end_position.x = end_position.x + direction[1].parse::<i64>().unwrap();
-    }
-
-    if direction[0] == "down" {
-        end_position.y = end_position.y - direction[1].parse::<i64>().unwrap();
-    }
-
-    if direction[0] == "up" {
-        end_position.y = end_position.y + direction[1].parse::<i64>().unwrap();
-    }
 }
 
 pub fn part_a(input: &str) -> i64 {
@@ -26,18 +11,20 @@ pub fn part_a(input: &str) -> i64 {
     for line in lines {
         let direction: Vec<&str> = line.split(" ").collect();
 
-        if direction[0] == "forward" {
-            end_position.x = end_position.x + direction[1].parse::<i64>().unwrap();
-        }
+        match direction[0] {
+            "forward" => {
+                end_position.x += direction[1].parse::<i64>().unwrap();
+            }
 
-        if direction[0] == "down" {
-            end_position.y = end_position.y + direction[1].parse::<i64>().unwrap();
-        }
+            "down" => {
+                end_position.y += direction[1].parse::<i64>().unwrap();
+            }
 
-        if direction[0] == "up" {
-            end_position.y = end_position.y - direction[1].parse::<i64>().unwrap();
+            "up" => {
+                end_position.y -= direction[1].parse::<i64>().unwrap();
+            }
+            _ => panic!(),
         }
-        // map_direction_to_struct(line_vec, end_destination)
     }
 
     end_position.x * end_position.y
@@ -52,17 +39,20 @@ pub fn part_b(input: &str) -> i64 {
     for line in lines {
         let direction: Vec<&str> = line.split(" ").collect();
 
-        if direction[0] == "forward" {
-            end_position.x = end_position.x + direction[1].parse::<i64>().unwrap();
-            end_position.y = end_position.y + (aim * direction[1].parse::<i64>().unwrap());
-        }
+        match direction[0] {
+            "forward" => {
+                end_position.x += direction[1].parse::<i64>().unwrap();
+                end_position.y += aim * direction[1].parse::<i64>().unwrap();
+            }
 
-        if direction[0] == "down" {
-            aim = aim + direction[1].parse::<i64>().unwrap();
-        }
+            "down" => {
+                aim += direction[1].parse::<i64>().unwrap();
+            }
 
-        if direction[0] == "up" {
-            aim = aim - direction[1].parse::<i64>().unwrap();
+            "up" => {
+                aim -= direction[1].parse::<i64>().unwrap();
+            }
+            _ => panic!(),
         }
     }
 
