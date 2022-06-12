@@ -3,7 +3,6 @@ pub fn part_a(input: &str) -> i64 {
 
     let mut values_array: Vec<u32> = vec![0; 12];
 
-    //This could be a String
     let mut gama_rate_array: Vec<u32> = vec![0; 12];
     let mut epsilon_rate_array: Vec<u32> = vec![0; 12];
 
@@ -41,14 +40,52 @@ pub fn part_a(input: &str) -> i64 {
     gama * epsilon
 }
 
+// Alternative solution pushin values to a String instead of
+// an Vec and then transforming it to a String.
+pub fn part_a_alternative(input: &str) -> i64 {
+    let lines: Vec<&str> = input.trim().split('\n').collect();
+
+    let mut values_array: Vec<u32> = vec![0; 12];
+
+    let mut gama_rate_array = String::new();
+    let mut epsilon_rate_array = String::new();
+
+    for line in lines.iter() {
+        for (i, char) in line.chars().enumerate() {
+            if char == '1' {
+                values_array[i] += 1;
+            }
+        }
+    }
+
+    for (_i, value) in values_array.iter().enumerate() {
+        let x: u32 = (lines.len().clone() / 2).try_into().unwrap();
+        if value > &x {
+            gama_rate_array.push('1');
+            epsilon_rate_array.push('0');
+        } else {
+            gama_rate_array.push('0');
+            epsilon_rate_array.push('1');
+        }
+    }
+
+    let gama = i64::from_str_radix(&gama_rate_array, 2).unwrap();
+    let epsilon = i64::from_str_radix(&epsilon_rate_array, 2).unwrap();
+
+    gama * epsilon
+}
+
 // pub fn part_b(input: &str) -> i64 {}
 
 #[cfg(test)]
 mod tests {
+    use crate::day3::part_a_alternative;
+
     use super::part_a;
     #[test]
     fn test_day_3() {
         assert_eq!(part_a(include_str!("day3_input.txt")), 845186);
+        assert_eq!(part_a_alternative(include_str!("day3_input.txt")), 845186);
         // assert_eq!(part_b(include_str!("day3_input.txt")), 1954293920);
     }
 }
