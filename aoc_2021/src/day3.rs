@@ -1,7 +1,4 @@
 pub fn part_a(input: &str) -> i64 {
-    // let gamma_rate = "000000000000";
-    // let epsilon_rate = "111111111111";
-
     let lines: Vec<&str> = input.trim().split('\n').collect();
 
     let mut values_array: Vec<u32> = vec![0; 12];
@@ -11,11 +8,9 @@ pub fn part_a(input: &str) -> i64 {
     let mut epsilon_rate_array: Vec<u32> = vec![0; 12];
 
     for line in lines.iter() {
-        // let mut amount_of_ones = 0;
         for (i, char) in line.chars().enumerate() {
             if char == '1' {
                 values_array[i] += 1;
-                // amount_of_ones += 1
             }
         }
     }
@@ -30,9 +25,6 @@ pub fn part_a(input: &str) -> i64 {
             epsilon_rate_array[i] = 1;
         }
     }
-
-    // println!("{:?}", gama_rate_array);
-    // println!("{:?}", epsilon_rate_array);
 
     let joined_gama_string: String = gama_rate_array.iter().map(|num| num.to_string()).collect();
     let gama_rate: String = format!("{}", joined_gama_string);
