@@ -109,12 +109,12 @@ fn get_element(input: &str, f: fn(usize, usize) -> bool) -> usize {
             .filter(|&c| c == '1')
             .count();
 
+        // The function checks for the most or least common bits
         most_common_bits.push(if f(count1, filtered.len() - count1) {
             '1'
         } else {
             '0'
         });
-        println!("Filtered {:?}", most_common_bits);
     }
 
     let filtered: Vec<_> = input
