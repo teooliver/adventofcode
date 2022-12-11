@@ -1,15 +1,22 @@
-pub fn part_a(input: &str) {}
+pub fn part_a(input: &str) {
+    let lines: Vec<&str> = input.trim().split('\n').collect();
+
+    let draw_numbers = lines[0];
+
+    let boards = &lines[1..];
+
+    println!("Numbers {:?} \n Boards {:?}", draw_numbers, boards);
+}
 
 pub fn part_b(input: &str) {}
 
-#[cfg(test)]
-mod tests {
-    use crate::day4::{part_a_alternative, part_b};
+// #[cfg(test)]
+// mod tests {
+//     use super::{part_a, part_b};
 
-    use super::part_a;
-    #[test]
-    fn test_day_3() {
-        assert_eq!(part_a(include_str!("day4_input.txt")), 845186);
-        assert_eq!(part_b(include_str!("day4_input.txt")), 4636702);
-    }
-}
+//     #[test]
+//     fn test_day_3() {
+//         assert_eq!(part_a(include_str!("day4_input.txt")), 845186);
+//         assert_eq!(part_b(include_str!("day4_input.txt")), 4636702);
+//     }
+// }

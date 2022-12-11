@@ -1,6 +1,7 @@
 mod day1;
 mod day2;
 mod day3;
+mod day4;
 
 fn main() {
     fn playground() {
@@ -16,5 +17,6 @@ fn main() {
     // day1::part_b(include_str!("day1_input.txt"));
     // day2::part_b(include_str!("day2_input.txt"));
     // day3::part_a(include_str!("day3_input.txt"));
-    day3::part_b(include_str!("day3_input.txt"));
+    // day3::part_b(include_str!("day3_input.txt"));
+    day4::part_a(include_str!("day4_input.txt"));
 }
